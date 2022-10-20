@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${title}"></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header">
+</header>
+<div class="container mt-5 mb-5">
+  <h1>Story Edit</h1>
+  <div th:each="el:${posts}"> <!-- th:value="${el.title}" th:value="${el.anons}"th:value="${el.text_of_story}-->
+  <form method="post">
+    <input type="text" th:value="${el.title}" name="title" placeholder="enter title of story" class="form-control"><br>
+    <input type="text" th:value="${el.anons}" name="anons" placeholder="anons" class="form-control"><br>
+    <textarea name="text_of_story" placeholder="story...." class="form-control" th:text="${el.text_of_story}"></textarea> <br>
+    <button type="submit" class="btn btn-success">refresh</button><br>
+  </form>
+</div>
+<footer th:insert="blocks/footer :: footer" class="text-muted py-5">
+</footer>
+</body>
+</html>
